@@ -1,0 +1,27 @@
+## Ignore temporary files, build results, etc.
+
+## Local VSCode settings
+.vscode/
+
+## Bower components
+bower_components/
+
+## Node.js
+node_modules/
+
+## Yarn error log
+yarn-error.log
+
+## Build files
+*.js
+*.js.map
+!gulpfile.js
+!/**/lib/**/*
+
+*.d.ts
+
+/analysis.json
+build
+coverage
+
+
