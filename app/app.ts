@@ -1,13 +1,18 @@
-// lib/app.ts
-import express = require('express');
+const zipkin = require("appmetrics-zipkin");
+const prometheus = require("appmetrics-prometheus").attach();
+const dash = require("appmetrics-dash").attach();
+const rest = require("rest");
+const express = require( "express" );
+const app = express();
 
-// Create a new express application instance
-const app: express.Application = express();
+// define a route handler for the default home page
+app.get( "/", ( _req: any, res: any ) => {
+    rest('http://localhost:9000/api')
+        .then((response: any) => res.send(response.entity))
+        .catch((err: any) => console.log('Error', err.stack));
+} );
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+const port = process.env.PORT || 8080; // port to listen
+app.listen( port, () => {
+    console.log( `server started at http://localhost:${ port }` );
 });

@@ -1,18 +1,24 @@
 {
-  "name": "typescript-trial",
+  "name": "node-ts-example",
   "version": "1.0.0",
   "description": "Trial projects",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/craclitty/node-ts-example.git"
+  },
   "scripts": {
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./app/app.ts",
     "prod": "tsc && node ./build/app.js"
   },
   "author": "Charlie Roche",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@types/express": "^4.16.1",
+    "appmetrics-zipkin": "^1.1.1",
     "express": "^4.16.4",
+    "rest": "^2.0.0",
     "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.4.5"
   }

@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: "node-ts-example-deployment"
+  labels:
+    chart: "node-ts-example-1.0.0"
+spec:
+  replicas: 5
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: "node-ts-example-selector"
+        version: "1.0.0"
+    spec:
+      containers:
+        - name: node-ts-example
+          image: docker.io/crackitty/node-ts-example:1.0.0
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 3000
+            periodSeconds: 1000
+          resources:
+            requests: 
+              cpu: "200m"
+              memory: "300Mi"
+          env:
+            - name: PORT
+              value: "3000"
