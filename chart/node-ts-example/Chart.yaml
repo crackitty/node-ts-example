@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Basic Help chart for Kubernetes
+name: node-ts-example
+version: 1.0.0
